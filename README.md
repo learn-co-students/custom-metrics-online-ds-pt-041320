@@ -251,6 +251,8 @@ recall_score(y, lr.predict(X), average='micro')
 
 Let's say we want the recall score `true_positives / (true_positives + false_negatives)`
 
+...but we don't want some kind of averaged recall score for all three classes, we specifically want the **recall score for class 1**.
+
 ### Basic Score Calculation
 
 We could calculate it by hand:
@@ -476,6 +478,10 @@ confusion_matrix(y, lr.predict(X))
            [ 0,  4, 46]])
 
 
+
+Success! Grid searching with our custom metric resulted in some improvement!
+
+(In this case, it looks like grid searching without any custom scorer would have done the same thing, since we actually just improved the score overall when we did this grid search. But you can imagine a scenario where there was more of a trade-off between overall accuracy and recall for a specific class.)
 
 ## Conclusion
 
